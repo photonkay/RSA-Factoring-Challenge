@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	char *filename;
 	FILE *file;
 	char line[512];
-	int num;
+	long long int num;
 
 	if (argc !=2)
 	{
