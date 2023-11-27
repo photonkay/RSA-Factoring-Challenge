@@ -1,22 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Function to swap two values
+void swap(long long int *a, long long int *b) {
+    long long int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void factorize(long long int n) {
     printf("%lld=", n);
 
+    // Array to store the factors
+    long long int factors[256];
+    int factorIndex = 0;
+
     while (n % 2 == 0) {
-        printf("2*");
         n /= 2;
+        factors[factorIndex++] = 2;
     }
 
     for (long long int i = 3; i <= n; i += 2) {
         while (n % i == 0) {
-            printf("%lld", i);
             n /= i;
+            factors[factorIndex++] = i;
+        }
+    }
 
-            if (n != 1) {
-                printf("*");
-            }
+    // Print factors in reverse order
+    for (int i = factorIndex - 1; i >= 0; --i) {
+        printf("%lld", factors[i]);
+
+        if (i != 0) {
+            printf("*");
         }
     }
 
